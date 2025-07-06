@@ -1,0 +1,412 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "fullName": "Trivy Vulnerability Scanner",
+          "informationUri": "https://github.com/aquasecurity/trivy",
+          "name": "Trivy",
+          "rules": [
+            {
+              "id": "CVE-2024-34069",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "python-werkzeug: user may execute code on a developer's machine"
+              },
+              "fullDescription": {
+                "text": "Werkzeug is a comprehensive WSGI web application library. The debugger in affected versions of Werkzeug can allow an attacker to execute code on a developer's machine under some circumstances. This requires the attacker to get the developer to interact with a domain and subdomain they control, and enter the debugger PIN, but if they are successful it allows access to the debugger even if it is only running on localhost. This also requires the attacker to guess a URL in the developer's application that will trigger the debugger. This vulnerability is fixed in 3.0.3."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2024-34069",
+              "help": {
+                "text": "Vulnerability CVE-2024-34069\nSeverity: HIGH\nPackage: Werkzeug\nFixed Version: 3.0.3\nLink: [CVE-2024-34069](https://avd.aquasec.com/nvd/cve-2024-34069)\nWerkzeug is a comprehensive WSGI web application library. The debugger in affected versions of Werkzeug can allow an attacker to execute code on a developer's machine under some circumstances. This requires the attacker to get the developer to interact with a domain and subdomain they control, and enter the debugger PIN, but if they are successful it allows access to the debugger even if it is only running on localhost. This also requires the attacker to guess a URL in the developer's application that will trigger the debugger. This vulnerability is fixed in 3.0.3.",
+                "markdown": "**Vulnerability CVE-2024-34069**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|Werkzeug|3.0.3|[CVE-2024-34069](https://avd.aquasec.com/nvd/cve-2024-34069)|\n\nWerkzeug is a comprehensive WSGI web application library. The debugger in affected versions of Werkzeug can allow an attacker to execute code on a developer's machine under some circumstances. This requires the attacker to get the developer to interact with a domain and subdomain they control, and enter the debugger PIN, but if they are successful it allows access to the debugger even if it is only running on localhost. This also requires the attacker to guess a URL in the developer's application that will trigger the debugger. This vulnerability is fixed in 3.0.3."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "7.5",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2023-46136",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "python-werkzeug: high resource consumption leading to denial of service"
+              },
+              "fullDescription": {
+                "text": "Werkzeug is a comprehensive WSGI web application library. If an upload of a file that starts with CR or LF and then is followed by megabytes of data without these characters: all of these bytes are appended chunk by chunk into internal bytearray and lookup for boundary is performed on growing buffer. This allows an attacker to cause a denial of service by sending crafted multipart data to an endpoint that will parse it. The amount of CPU time required can block worker processes from handling legitimate requests. This vulnerability has been patched in version 3.0.1."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2023-46136",
+              "help": {
+                "text": "Vulnerability CVE-2023-46136\nSeverity: MEDIUM\nPackage: Werkzeug\nFixed Version: 3.0.1, 2.3.8\nLink: [CVE-2023-46136](https://avd.aquasec.com/nvd/cve-2023-46136)\nWerkzeug is a comprehensive WSGI web application library. If an upload of a file that starts with CR or LF and then is followed by megabytes of data without these characters: all of these bytes are appended chunk by chunk into internal bytearray and lookup for boundary is performed on growing buffer. This allows an attacker to cause a denial of service by sending crafted multipart data to an endpoint that will parse it. The amount of CPU time required can block worker processes from handling legitimate requests. This vulnerability has been patched in version 3.0.1.",
+                "markdown": "**Vulnerability CVE-2023-46136**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|Werkzeug|3.0.1, 2.3.8|[CVE-2023-46136](https://avd.aquasec.com/nvd/cve-2023-46136)|\n\nWerkzeug is a comprehensive WSGI web application library. If an upload of a file that starts with CR or LF and then is followed by megabytes of data without these characters: all of these bytes are appended chunk by chunk into internal bytearray and lookup for boundary is performed on growing buffer. This allows an attacker to cause a denial of service by sending crafted multipart data to an endpoint that will parse it. The amount of CPU time required can block worker processes from handling legitimate requests. This vulnerability has been patched in version 3.0.1."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "5.7",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2024-49766",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "werkzeug: python-werkzeug: Werkzeug safe_join not safe on Windows"
+              },
+              "fullDescription": {
+                "text": "Werkzeug is a Web Server Gateway Interface web application library. On Python \u003c 3.11 on Windows, os.path.isabs() does not catch UNC paths like //server/share. Werkzeug's safe_join() relies on this check, and so can produce a path that is not safe, potentially allowing unintended access to data. Applications using Python \u003e= 3.11, or not using Windows, are not vulnerable. Werkzeug version 3.0.6 contains a patch."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2024-49766",
+              "help": {
+                "text": "Vulnerability CVE-2024-49766\nSeverity: MEDIUM\nPackage: Werkzeug\nFixed Version: 3.0.6\nLink: [CVE-2024-49766](https://avd.aquasec.com/nvd/cve-2024-49766)\nWerkzeug is a Web Server Gateway Interface web application library. On Python \u003c 3.11 on Windows, os.path.isabs() does not catch UNC paths like //server/share. Werkzeug's safe_join() relies on this check, and so can produce a path that is not safe, potentially allowing unintended access to data. Applications using Python \u003e= 3.11, or not using Windows, are not vulnerable. Werkzeug version 3.0.6 contains a patch.",
+                "markdown": "**Vulnerability CVE-2024-49766**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|Werkzeug|3.0.6|[CVE-2024-49766](https://avd.aquasec.com/nvd/cve-2024-49766)|\n\nWerkzeug is a Web Server Gateway Interface web application library. On Python \u003c 3.11 on Windows, os.path.isabs() does not catch UNC paths like //server/share. Werkzeug's safe_join() relies on this check, and so can produce a path that is not safe, potentially allowing unintended access to data. Applications using Python \u003e= 3.11, or not using Windows, are not vulnerable. Werkzeug version 3.0.6 contains a patch."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "5.5",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2024-49767",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "werkzeug: python-werkzeug: Werkzeug possible resource exhaustion when parsing file data in forms"
+              },
+              "fullDescription": {
+                "text": "Werkzeug is a Web Server Gateway Interface web application library. Applications using `werkzeug.formparser.MultiPartParser` corresponding to a version of Werkzeug prior to 3.0.6 to parse `multipart/form-data` requests (e.g. all flask applications) are vulnerable to a relatively simple but effective resource exhaustion (denial of service) attack. A specifically crafted form submission request can cause the parser to allocate and block 3 to 8 times the upload size in main memory. There is no upper limit; a single upload at 1 Gbit/s can exhaust 32 GB of RAM in less than 60 seconds. Werkzeug version 3.0.6 fixes this issue."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2024-49767",
+              "help": {
+                "text": "Vulnerability CVE-2024-49767\nSeverity: MEDIUM\nPackage: Werkzeug\nFixed Version: 3.0.6\nLink: [CVE-2024-49767](https://avd.aquasec.com/nvd/cve-2024-49767)\nWerkzeug is a Web Server Gateway Interface web application library. Applications using `werkzeug.formparser.MultiPartParser` corresponding to a version of Werkzeug prior to 3.0.6 to parse `multipart/form-data` requests (e.g. all flask applications) are vulnerable to a relatively simple but effective resource exhaustion (denial of service) attack. A specifically crafted form submission request can cause the parser to allocate and block 3 to 8 times the upload size in main memory. There is no upper limit; a single upload at 1 Gbit/s can exhaust 32 GB of RAM in less than 60 seconds. Werkzeug version 3.0.6 fixes this issue.",
+                "markdown": "**Vulnerability CVE-2024-49767**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|Werkzeug|3.0.6|[CVE-2024-49767](https://avd.aquasec.com/nvd/cve-2024-49767)|\n\nWerkzeug is a Web Server Gateway Interface web application library. Applications using `werkzeug.formparser.MultiPartParser` corresponding to a version of Werkzeug prior to 3.0.6 to parse `multipart/form-data` requests (e.g. all flask applications) are vulnerable to a relatively simple but effective resource exhaustion (denial of service) attack. A specifically crafted form submission request can cause the parser to allocate and block 3 to 8 times the upload size in main memory. There is no upper limit; a single upload at 1 Gbit/s can exhaust 32 GB of RAM in less than 60 seconds. Werkzeug version 3.0.6 fixes this issue."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "7.5",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2023-5752",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "pip: Mercurial configuration injectable in repo revision when installing via pip"
+              },
+              "fullDescription": {
+                "text": "When installing a package from a Mercurial VCS URL  (ie \"pip install \nhg+...\") with pip prior to v23.3, the specified Mercurial revision could\n be used to inject arbitrary configuration options to the \"hg clone\" \ncall (ie \"--config\"). Controlling the Mercurial configuration can modify\n how and which repository is installed. This vulnerability does not \naffect users who aren't installing from Mercurial."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2023-5752",
+              "help": {
+                "text": "Vulnerability CVE-2023-5752\nSeverity: MEDIUM\nPackage: pip\nFixed Version: 23.3\nLink: [CVE-2023-5752](https://avd.aquasec.com/nvd/cve-2023-5752)\nWhen installing a package from a Mercurial VCS URL  (ie \"pip install \nhg+...\") with pip prior to v23.3, the specified Mercurial revision could\n be used to inject arbitrary configuration options to the \"hg clone\" \ncall (ie \"--config\"). Controlling the Mercurial configuration can modify\n how and which repository is installed. This vulnerability does not \naffect users who aren't installing from Mercurial.",
+                "markdown": "**Vulnerability CVE-2023-5752**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|pip|23.3|[CVE-2023-5752](https://avd.aquasec.com/nvd/cve-2023-5752)|\n\nWhen installing a package from a Mercurial VCS URL  (ie \"pip install \nhg+...\") with pip prior to v23.3, the specified Mercurial revision could\n be used to inject arbitrary configuration options to the \"hg clone\" \ncall (ie \"--config\"). Controlling the Mercurial configuration can modify\n how and which repository is installed. This vulnerability does not \naffect users who aren't installing from Mercurial."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "5.5",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2024-6345",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "pypa/setuptools: Remote code execution via download functions in the package_index module in pypa/setuptools"
+              },
+              "fullDescription": {
+                "text": "A vulnerability in the package_index module of pypa/setuptools versions up to 69.1.1 allows for remote code execution via its download functions. These functions, which are used to download packages from URLs provided by users or retrieved from package index servers, are susceptible to code injection. If these functions are exposed to user-controlled inputs, such as package URLs, they can execute arbitrary commands on the system. The issue is fixed in version 70.0."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2024-6345",
+              "help": {
+                "text": "Vulnerability CVE-2024-6345\nSeverity: HIGH\nPackage: setuptools\nFixed Version: 70.0.0\nLink: [CVE-2024-6345](https://avd.aquasec.com/nvd/cve-2024-6345)\nA vulnerability in the package_index module of pypa/setuptools versions up to 69.1.1 allows for remote code execution via its download functions. These functions, which are used to download packages from URLs provided by users or retrieved from package index servers, are susceptible to code injection. If these functions are exposed to user-controlled inputs, such as package URLs, they can execute arbitrary commands on the system. The issue is fixed in version 70.0.",
+                "markdown": "**Vulnerability CVE-2024-6345**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|setuptools|70.0.0|[CVE-2024-6345](https://avd.aquasec.com/nvd/cve-2024-6345)|\n\nA vulnerability in the package_index module of pypa/setuptools versions up to 69.1.1 allows for remote code execution via its download functions. These functions, which are used to download packages from URLs provided by users or retrieved from package index servers, are susceptible to code injection. If these functions are exposed to user-controlled inputs, such as package URLs, they can execute arbitrary commands on the system. The issue is fixed in version 70.0."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "8.8",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-47273",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "setuptools: Path Traversal Vulnerability in setuptools PackageIndex"
+              },
+              "fullDescription": {
+                "text": "setuptools is a package that allows users to download, build, install, upgrade, and uninstall Python packages. A path traversal vulnerability in `PackageIndex` is present in setuptools prior to version 78.1.1. An attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to remote code execution depending on the context. Version 78.1.1 fixes the issue."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2025-47273",
+              "help": {
+                "text": "Vulnerability CVE-2025-47273\nSeverity: HIGH\nPackage: setuptools\nFixed Version: 78.1.1\nLink: [CVE-2025-47273](https://avd.aquasec.com/nvd/cve-2025-47273)\nsetuptools is a package that allows users to download, build, install, upgrade, and uninstall Python packages. A path traversal vulnerability in `PackageIndex` is present in setuptools prior to version 78.1.1. An attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to remote code execution depending on the context. Version 78.1.1 fixes the issue.",
+                "markdown": "**Vulnerability CVE-2025-47273**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|setuptools|78.1.1|[CVE-2025-47273](https://avd.aquasec.com/nvd/cve-2025-47273)|\n\nsetuptools is a package that allows users to download, build, install, upgrade, and uninstall Python packages. A path traversal vulnerability in `PackageIndex` is present in setuptools prior to version 78.1.1. An attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to remote code execution depending on the context. Version 78.1.1 fixes the issue."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "8.0",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "HIGH"
+                ]
+              }
+            }
+          ],
+          "version": "0.64.1"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CVE-2024-34069",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Package: Werkzeug\nInstalled Version: 2.2.3\nVulnerability CVE-2024-34069\nSeverity: HIGH\nFixed Version: 3.0.3\nLink: [CVE-2024-34069](https://avd.aquasec.com/nvd/cve-2024-34069)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "usr/local/lib/python3.10/site-packages/Werkzeug-2.2.3.dist-info/METADATA",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "usr/local/lib/python3.10/site-packages/Werkzeug-2.2.3.dist-info/METADATA: Werkzeug@2.2.3"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2023-46136",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Package: Werkzeug\nInstalled Version: 2.2.3\nVulnerability CVE-2023-46136\nSeverity: MEDIUM\nFixed Version: 3.0.1, 2.3.8\nLink: [CVE-2023-46136](https://avd.aquasec.com/nvd/cve-2023-46136)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "usr/local/lib/python3.10/site-packages/Werkzeug-2.2.3.dist-info/METADATA",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "usr/local/lib/python3.10/site-packages/Werkzeug-2.2.3.dist-info/METADATA: Werkzeug@2.2.3"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2024-49766",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Package: Werkzeug\nInstalled Version: 2.2.3\nVulnerability CVE-2024-49766\nSeverity: MEDIUM\nFixed Version: 3.0.6\nLink: [CVE-2024-49766](https://avd.aquasec.com/nvd/cve-2024-49766)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "usr/local/lib/python3.10/site-packages/Werkzeug-2.2.3.dist-info/METADATA",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "usr/local/lib/python3.10/site-packages/Werkzeug-2.2.3.dist-info/METADATA: Werkzeug@2.2.3"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2024-49767",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Package: Werkzeug\nInstalled Version: 2.2.3\nVulnerability CVE-2024-49767\nSeverity: MEDIUM\nFixed Version: 3.0.6\nLink: [CVE-2024-49767](https://avd.aquasec.com/nvd/cve-2024-49767)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "usr/local/lib/python3.10/site-packages/Werkzeug-2.2.3.dist-info/METADATA",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "usr/local/lib/python3.10/site-packages/Werkzeug-2.2.3.dist-info/METADATA: Werkzeug@2.2.3"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2023-5752",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "Package: pip\nInstalled Version: 23.0.1\nVulnerability CVE-2023-5752\nSeverity: MEDIUM\nFixed Version: 23.3\nLink: [CVE-2023-5752](https://avd.aquasec.com/nvd/cve-2023-5752)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "usr/local/lib/python3.10/site-packages/pip-23.0.1.dist-info/METADATA",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "usr/local/lib/python3.10/site-packages/pip-23.0.1.dist-info/METADATA: pip@23.0.1"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2024-6345",
+          "ruleIndex": 5,
+          "level": "error",
+          "message": {
+            "text": "Package: setuptools\nInstalled Version: 65.5.1\nVulnerability CVE-2024-6345\nSeverity: HIGH\nFixed Version: 70.0.0\nLink: [CVE-2024-6345](https://avd.aquasec.com/nvd/cve-2024-6345)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "usr/local/lib/python3.10/site-packages/setuptools-65.5.1.dist-info/METADATA",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "usr/local/lib/python3.10/site-packages/setuptools-65.5.1.dist-info/METADATA: setuptools@65.5.1"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-47273",
+          "ruleIndex": 6,
+          "level": "error",
+          "message": {
+            "text": "Package: setuptools\nInstalled Version: 65.5.1\nVulnerability CVE-2025-47273\nSeverity: HIGH\nFixed Version: 78.1.1\nLink: [CVE-2025-47273](https://avd.aquasec.com/nvd/cve-2025-47273)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "usr/local/lib/python3.10/site-packages/setuptools-65.5.1.dist-info/METADATA",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "usr/local/lib/python3.10/site-packages/setuptools-65.5.1.dist-info/METADATA: setuptools@65.5.1"
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits",
+      "originalUriBaseIds": {
+        "ROOTPATH": {
+          "uri": "file:///"
+        }
+      },
+      "properties": {
+        "imageID": "sha256:0d53aa8a37fb9b096531124eaaa6352925bbcddf65ab7cedfdbe2fa2c21a28ce",
+        "imageName": "myapp:test",
+        "repoDigests": [],
+        "repoTags": [
+          "myapp:test"
+        ]
+      }
+    }
+  ]
+}
