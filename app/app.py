@@ -7,4 +7,5 @@ def index():
     return f"Hello, world! Your IP is {request.remote_addr}"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=7000)
+

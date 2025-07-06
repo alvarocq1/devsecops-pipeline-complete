@@ -7,38 +7,66 @@ on:
     branches: [ "main" ]
 
 jobs:
-  security-checks:
+  phase1_local_ci:
+    name: 🔍 Phase 1 - Local CI (Bandit + Gitleaks)
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r app/requirements.txt
-        pip install bandit
+      - name: Install dependencies
+        run: |
+          pip install -r app/requirements.txt
+          pip install bandit
 
-    - name: Run Bandit (SAST)
-      continue-on-error: true
-      run: bandit -r app -ll
+      - name: Run Bandit (SAST)
+        continue-on-error: true
+        run: bandit -r app -ll
 
-    - name: Run Gitleaks
-      uses: gitleaks/gitleaks-action@v2
-      with:
-        scan-mode: "source"
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          scan-mode: "source"
 
-    - name: Upload Gitleaks report
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: gitleaks-report
-        path: gitleaks-report.sarif
+      - name: Upload Gitleaks report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gitleaks-report
+          path: gitleaks-report.sarif
 
+  phase2_docker_scan:
+    name: 🐳 Phase 2 - Docker Build & Trivy Scan
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: docker build -t myapp:test .
+
+      - name: Run Trivy scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: myapp:test
+          format: sarif
+          output: trivy-report.sarif
+          exit-code: 1
+          ignore-unfixed: true
+
+      - name: Upload Trivy scan report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-report
+          path: trivy-report.sarif
