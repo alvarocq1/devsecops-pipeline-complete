@@ -1,0 +1,20 @@
+# Terraform state (archivos con información sensible del entorno)
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.backup
+
+# Terraform provider plugins
+.terraform/
+
+# Claves o credenciales
+terraform-user_accessKeys.csv
+
+# Archivos temporales de tu editor
+*.swp
+*.swo
+*.log
+.DS_Store
+
+# Archivos de sistema (macOS)
+**/._*
